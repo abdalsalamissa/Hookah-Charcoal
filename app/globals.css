@@ -1,26 +1,54 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-ember-400: #ff9a3c;
+  --color-ember-500: #ff7a1a;
+  --color-ember-600: #e55f00;
+
+  --color-coal-700: #2a2623;
+  --color-coal-800: #1d1a18;
+  --color-coal-900: #141211;
+  --color-coal-950: #0b0a09;
+
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-glow: glow 4s ease-in-out infinite;
+  --animate-fade-up: fade-up 0.8s ease-out both;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-18px) rotate(1.5deg); }
+  }
+
+  @keyframes glow {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.12); }
+  }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-coal-950);
+  color: var(--color-neutral-200);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Arabic uses Cairo as its primary font */
+:root[lang="ar"] body {
+  font-family: var(--font-cairo), system-ui, sans-serif;
 }
