@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Content } from "@/lib/content";
+import heroImage from "@/assets/hero.svg";
 
 export default function Hero({ t }: { t: Content }) {
   const { brand } = t;
@@ -47,10 +48,8 @@ export default function Hero({ t }: { t: Content }) {
           <div className="animate-glow motion-reduce:animate-none absolute inset-8 -z-10 rounded-full bg-ember-500/30 blur-3xl" />
           <div className="animate-float motion-reduce:animate-none">
             <Image
-              src="/images/hero.svg"
+              src={heroImage}
               alt={brand.imageAlt}
-              width={800}
-              height={800}
               priority
               sizes="(min-width: 768px) 448px, 90vw"
               className="h-auto w-full rounded-3xl"
